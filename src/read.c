@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 15:44:31 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/01 15:55:07 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/01 16:25:42 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_filler	*init(void)
 	filler->msize.y = 0;
 	filler->tsize.x = 0;
 	filler->tsize.y = 0;
-	filler->player = ft_atoi(&buf[10]);
+	filler->player = buf[10] == '1' ? 'O' : 'X';
 	ft_strdel(&buf);
 	return (filler);
 }
