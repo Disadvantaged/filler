@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/03/31 16:52:32 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/01 15:56:30 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ typedef struct	s_filler
 	
 	int				player;
 }				t_filler;
+
+int			update_map(t_filler *filler);
+void		get_piece(t_filler *filler);
+t_filler	*init(void);
+void		free_filler(t_filler *filler);
 
 #endif

@@ -4,7 +4,8 @@ FLAGS = -Wall -Werror -Wextra
 
 FLAGS += -Ilibft/includes -Iincludes/
 
-SRC = main.c
+SRC = main.c \
+	  read.c
 
 SRCS = $(addprefix src/, $(SRC))
 
