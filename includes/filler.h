@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/01 16:25:07 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/06 16:26:20 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ typedef struct	s_coord
 typedef struct	s_filler
 {
 	char			**map;
-	struct coord	msize;
+	struct s_coord	msize;
 	char			**piece;
-	strcut coord	*pcoord;
-	struct coord	tsize;
+	struct s_coord	pcoord[1024];
+	int				pcur;
+	struct s_coord	tsize;
 	char			player;
 }				t_filler;
 
-int			update_map(t_filler *filler);
-void		get_piece(t_filler *filler);
-t_filler	*init(void);
-void		free_filler(t_filler *filler);
+int				update_map(t_filler *filler);
+void			get_piece(t_filler *filler);
+t_filler		*init(void);
+void			free_filler(t_filler *filler);
+int				place_piece(t_filler *filler);
 
 #endif

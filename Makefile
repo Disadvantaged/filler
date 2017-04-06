@@ -5,7 +5,8 @@ FLAGS = -Wall -Werror -Wextra
 FLAGS += -Ilibft/includes -Iincludes/
 
 SRC = main.c \
-	  read.c
+	  read.c \
+	  place.c
 
 SRCS = $(addprefix src/, $(SRC))
 
@@ -35,12 +36,6 @@ clean:
 	@ $(RM) $(OBJS)
 	@ echo '[done]'
 	make -C $(LIBFT_PATH) clean
-fight1:
-	./resources/filler_vm -p1 ./filler -p2 resources/players/abanlin.filler -f resources/maps/map00
-fight2:
-	./resources/filler_vm -p1 ./filler -p2 resources/players/hcan.filler -f resources/maps/map01
-fight3:
-	./resources/filler_vm -p1 ./filler -p2 resources/players/carli.filler -f resources/maps/map02
 fclean: clean
 	@ echo -n 'removing binary ... '
 	@ $(RM) $(NAME)

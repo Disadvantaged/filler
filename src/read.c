@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 15:44:31 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/01 16:25:42 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/06 16:28:01 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,29 @@ void		get_piece(t_filler *filler)
 {
 	char	*buf;
 	int		i;
+	int		j;
 
 	get_next_line(STDIN_FILENO, &buf);
 	filler->tsize.y = ft_atoi(&buf[6]);
 	filler->tsize.x = ft_atoi(&buf[7 + ft_nbrlen(filler->tsize.y)]);
+	ft_strdel(&buf);
 	filler->piece = (char **)malloc(sizeof(char *) * (filler->tsize.y + 1));
 	i = 0;
+	filler->pcur = 0;
 	while (i < filler->tsize.y)
-		get_next_line(STDIN_FILENO, &filler->piece[i++]);
+	{
+		get_next_line(STDIN_FILENO, &filler->piece[i]);
+		j = 0;
+		while (j < filler->tsize.x)
+		{
+			if (filler->piece[i][j++] == '*')
+			{
+				filler->pcoord[filler->pcur].x = j;
+				filler->pcoord[filler->pcur++].y = i;
+			}
+		}
+		i++;
+	}
 	filler->piece[i] = NULL;
 }
 
