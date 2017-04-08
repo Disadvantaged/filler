@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:34:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/06 16:23:10 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 13:07:47 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ void		free_filler(t_filler *filler)
 	filler->piece = NULL;
 }
 
+void		print(char **map, struct s_coord size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size.y)
+	{
+		ft_dprintf(STDERR_FILENO, "%s\n", map[i]);
+		i++;
+	}
+}
+
 int			main(void)
 {
 	t_filler	*filler;
@@ -46,6 +58,7 @@ int			main(void)
 			break ;
 		free_filler(filler);
 	}
+	ft_printf("0 0\n");
 	free(filler);
 	return (0);
 }

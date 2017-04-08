@@ -42,3 +42,5 @@ fclean: clean
 	@ echo '[done]'
 	make -C $(LIBFT_PATH) fclean
 re: fclean all
+
+.PHONY: all clean fclean re

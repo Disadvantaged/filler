@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/06 16:26:20 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 11:55:29 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,23 @@ typedef struct	s_coord
 	int		y;
 }				t_coord;
 
+/*
+** player and opponent equal to 'X' or to 'O'
+** pcoord is array of coordinates of '*' characters in token
+** tsize is token size
+** pcur is max size of array of pcoord
+*/
+
 typedef struct	s_filler
 {
 	char			**map;
 	struct s_coord	msize;
 	char			**piece;
+	struct s_coord	tsize;
 	struct s_coord	pcoord[1024];
 	int				pcur;
-	struct s_coord	tsize;
 	char			player;
+	char			opponent;
 }				t_filler;
 
 int				update_map(t_filler *filler);

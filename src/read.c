@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 15:44:31 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/06 16:30:39 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 13:11:53 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,46 @@ int			update_map(t_filler *filler)
 	return (1);
 }
 
+void		get_coord(t_filler *filler)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	filler->pcur = 0;
+	while (i < filler->tsize.y)
+	{
+		j = 0;
+		while (j < filler->tsize.x)
+		{
+			if (filler->piece[i][j] == '*')
+			{
+				filler->pcoord[filler->pcur].x = j;
+				filler->pcoord[filler->pcur].y = i;
+				filler->pcur++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void		get_piece(t_filler *filler)
 {
 	char	*buf;
 	int		i;
-	int		j;
 
 	get_next_line(STDIN_FILENO, &buf);
 	filler->tsize.y = ft_atoi(&buf[6]);
 	filler->tsize.x = ft_atoi(&buf[7 + ft_nbrlen(filler->tsize.y)]);
 	ft_strdel(&buf);
 	filler->piece = (char **)malloc(sizeof(char *) * (filler->tsize.y + 1));
-	i = -1;
+	i = 0;
 	filler->pcur = 0;
 	while (i < filler->tsize.y)
-	{
-		get_next_line(STDIN_FILENO, &filler->piece[++i]);
-		j = 0;
-		while (j < filler->tsize.x)
-		{
-			if (filler->piece[i][j++] == '*')
-			{
-				filler->pcoord[filler->pcur].x = j;
-				filler->pcoord[filler->pcur++].y = i;
-			}
-		}
-	}
+		get_next_line(STDIN_FILENO, &filler->piece[i++]);
 	filler->piece[i] = NULL;
+	get_coord(filler);
 }
 
 t_filler	*init(void)
@@ -84,6 +97,7 @@ t_filler	*init(void)
 	filler->tsize.x = 0;
 	filler->tsize.y = 0;
 	filler->player = buf[10] == '1' ? 'O' : 'X';
+	filler->opponent = buf[10] == '1' ? 'X' : 'O';
 	ft_strdel(&buf);
 	return (filler);
 }
