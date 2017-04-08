@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:23:17 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/08 13:26:56 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 14:17:15 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,19 @@ int		place(t_filler *filler, int y, int x)
 
 	i = 0;
 	k = 0;
+	if (y + filler->psize.y > filler->msize.y
+		|| x + filler->psize.x > filler->msize.x)
+		return (-1);
 	while (i < filler->pcur)
 	{
 		ys = y + filler->pcoord[i].y - filler->pcoord[0].y;
 		xs = x + filler->pcoord[i].x - filler->pcoord[0].x;
-		if (ys >= filler->msize.y || xs >= filler->msize.x)
+		if (filler->map[ys][xs] == filler->player ||
+			ft_toupper(filler->map[ys][xs]) == filler->player)
+			k++;
+		if (k > 1 || filler->map[ys][xs] == filler->opponent ||
+			ft_toupper(filler->map[ys][xs]) == filler->opponent)
 			return (-1);
-		if (ys < filler->msize.y && xs < filler->msize.x)
-		{
-			if (filler->map[ys][xs] == filler->player ||
-				ft_toupper(filler->map[ys][xs]) == filler->player)
-				k++;
-			if (k > 1 || filler->map[ys][xs] == filler->opponent ||
-				ft_toupper(filler->map[ys][xs]) == filler->opponent)
-				return (-1);
-		}
 		i++;
 	}
 	if (k == 1)

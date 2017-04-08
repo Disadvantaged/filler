@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/08 11:55:29 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 14:16:04 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_filler
 	char			**map;
 	struct s_coord	msize;
 	char			**piece;
-	struct s_coord	tsize;
+	struct s_coord	psize;
 	struct s_coord	pcoord[1024];
 	int				pcur;
 	char			player;

@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:34:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/08 13:07:47 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/08 14:16:21 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		free_filler(t_filler *filler)
 	free(filler->map);
 	filler->map = NULL;
 	i = 0;
-	while (i < filler->tsize.y)
+	while (i < filler->psize.y)
 		ft_strdel(&filler->piece[i++]);
 	free(filler->piece);
 	filler->piece = NULL;
