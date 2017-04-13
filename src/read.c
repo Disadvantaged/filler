@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 15:44:31 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/08 14:16:58 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/04/13 16:54:56 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ t_filler	*init(void)
 	filler->msize.y = 0;
 	filler->psize.x = 0;
 	filler->psize.y = 0;
-	filler->player = buf[10] == '1' ? 'O' : 'X';
-	filler->opponent = buf[10] == '1' ? 'X' : 'O';
+	filler->p = buf[10] == '1' ? 'O' : 'X';
+	filler->op = buf[10] == '1' ? 'X' : 'O';
 	ft_strdel(&buf);
 	return (filler);
 }
