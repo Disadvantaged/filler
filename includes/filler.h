@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:14:37 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 15:13:31 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct	s_coord
 	int		x;
 	int		y;
 }				t_coord;
+
+#define PLAYER filler->p
+#define OP filler->op
 
 /*
 ** player and opponent equal to 'X' or to 'O'
@@ -39,15 +42,20 @@ typedef struct	s_filler
 	int				pcur;
 	char			p;
 	char			op;
+	t_coord			playerCoord;
+	t_coord			opCoord;
 }				t_filler;
 
-int				update_map(t_filler *filler);
-void			get_coord(t_filler *filler);
-void			get_piece(t_filler *filler);
+int				updateMap(t_filler *filler);
+void			getCoord(t_filler *filler);
+void			getPiece(t_filler *filler);
 t_filler		*init(void);
-void			free_filler(t_filler *filler);
+void			freeFiller(t_filler *filler);
 int				checkPlace(t_filler *filler, int cur, int y, int x);
 int				canPlace(t_filler *filler, int y, int x);
 int				algo(t_filler *filler);
+int				bigMap(t_filler *filler);
+int				smallMap(t_filler *filler);
+void			getStartingPosition(t_filler *filler);
 
 #endif

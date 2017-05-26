@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:34:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:14:45 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:52:56 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void		free_filler(t_filler *filler)
+void		freeFiller(t_filler *filler)
 {
 	int		i;
 
@@ -26,6 +26,33 @@ void		free_filler(t_filler *filler)
 		ft_strdel(&filler->piece[i++]);
 	free(filler->piece);
 	filler->piece = NULL;
+}
+
+void		getStartingPosition(t_filler *filler)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < filler->msize.y)
+	{
+		j = 0;
+		while (j < filler->msize.x)
+		{
+			if (filler->map[i][j] == PLAYER || filler->map[i][j] == PLAYER + 32)
+			{
+				filler->playerCoord.x = j;
+				filler->playerCoord.y = i;
+			}
+			if (filler->map[i][j] == OP || filler->map[i][j] == OP + 32)
+			{
+				filler->opCoord.x = j;
+				filler->opCoord.y = i;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void		print(char **map, struct s_coord size)
@@ -49,14 +76,14 @@ int			main(void)
 	filler = init();
 	while (flag != 0)
 	{
-		flag = update_map(filler);
+		flag = updateMap(filler);
 		if (flag == 0)
 			break ;
-		get_piece(filler);
+		getPiece(filler);
 		flag = algo(filler);
 		if (flag == 0)
 			break ;
-		free_filler(filler);
+		freeFiller(filler);
 	}
 	ft_printf("0 0\n");
 	free(filler);

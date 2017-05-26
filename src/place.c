@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:23:17 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:12:15 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:25:56 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		canPlace(t_filler *filler, int y, int x)
 	{
 		ys = y + filler->pcoord[i].y - filler->pcoord[0].y;
 		xs = x + filler->pcoord[i].x - filler->pcoord[0].x;
-		if (k > 1 || (check_place(filler, i, y, x) == -1))
+		if (k > 1 || (checkPlace(filler, i, y, x) == -1))
 			return (-1);
 		if (filler->map[ys][xs] == filler->p ||
 			filler->map[ys][xs] + 32 == filler->p)

@@ -1,21 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   play.c                                             :+:      :+:    :+:   */
+/*   bigMap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/26 14:09:20 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 15:08:22 by dgolear          ###   ########.fr       */
+/*   Created: 2017/05/26 15:06:10 by dgolear           #+#    #+#             */
+/*   Updated: 2017/05/26 15:13:20 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		algo(t_filler *filler)
+static int	hasContactWithEnemy(t_filler *filler)
 {
-	if (filler->msize.y > 20)
-		return (bigMap(filler));
+
+}
+
+static int	findBestCase(t_filler *filler)
+{
+
+}
+
+static int	GoDown(t_filler *filler)
+{
+
+}
+
+static int	GoUp(t_filler *filler)
+{
+
+}
+
+int		bigMap(t_filler *filler)
+{
+	if (hasContactWithEnemy(filler))
+		return (findBestCase(filler));
 	else
-		return (smallMap(filler));
+	{
+		if (filler->playerCoord.y < filler->opCoord.y)
+		{
+			return (goDown(filler));
+		}
+		else
+		{
+			return (goUp(filler));
+		}
+	}
 }

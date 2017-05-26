@@ -7,7 +7,9 @@ FLAGS += -Ilibft/includes -Iincludes/
 SRC = main.c \
 	  read.c \
 	  place.c \
-	  algo.c
+	  algo.c \
+	  smallMap.c \
+	  bigMap.c
 
 SRCS = $(addprefix src/, $(SRC))
 
