@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:23:17 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:25:56 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 15:46:26 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		checkPlace(t_filler * filler, int i, int y, int x)
+int		check_place(t_filler * filler, int i, int y, int x)
 {
 	int		xs;
 	int		ys;
@@ -26,7 +26,7 @@ int		checkPlace(t_filler * filler, int i, int y, int x)
 	return (0);
 }
 
-int		canPlace(t_filler *filler, int y, int x)
+int		can_place(t_filler *filler, int y, int x)
 {
 	int		i;
 	int		k;
@@ -39,7 +39,7 @@ int		canPlace(t_filler *filler, int y, int x)
 	{
 		ys = y + filler->pcoord[i].y - filler->pcoord[0].y;
 		xs = x + filler->pcoord[i].x - filler->pcoord[0].x;
-		if (k > 1 || (checkPlace(filler, i, y, x) == -1))
+		if (k > 1 || (check_place(filler, i, y, x) == -1))
 			return (-1);
 		if (filler->map[ys][xs] == filler->p ||
 			filler->map[ys][xs] + 32 == filler->p)

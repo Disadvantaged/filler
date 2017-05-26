@@ -6,23 +6,29 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:06:10 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 15:30:45 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 17:07:21 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-static int	hasContactWithEnemy(t_filler *filler)
+/*
+static int	has_contact_with_enemy(t_filler *filler)
 {
-
+	if (filler)
+		return (1);
+	else
+		return (0);
 }
 
-static int	findBestCase(t_filler *filler)
+static int	find_best_case(t_filler *filler)
 {
-
+	if (filler)
+		return (1);
+	else
+		return (0);
 }
-
-static int	GoDown(t_filler *filler)
+*/
+static int	go_down(t_filler *filler)
 {
 	int		i;
 	int		j;
@@ -33,6 +39,12 @@ static int	GoDown(t_filler *filler)
 		j = filler->msize.x - 1;
 		while (j >= 0)
 		{
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j--;
 		}
 		i--;
@@ -40,17 +52,23 @@ static int	GoDown(t_filler *filler)
 	return (0);
 }
 
-static int	GoUp(t_filler *filler)
+static int	go_up(t_filler *filler)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < filler->msize.y)
+	while (i < filler->msize.y - 1)
 	{
 		j = 0;
-		while (i < filler->msize.x)
+		while (j < filler->msize.x - 1)
 		{
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j++;
 		}
 		i++;
@@ -58,19 +76,19 @@ static int	GoUp(t_filler *filler)
 	return (0);
 }
 
-int		bigMap(t_filler *filler)
+int		big_map(t_filler *filler)
 {
-	if (hasContactWithEnemy(filler))
-		return (findBestCase(filler));
+/*	if (has_contact_with_enemy(filler))
+		return (find_best_case(filler));
 	else
 	{
-		if (filler->playerCoord.y < filler->opCoord.y)
+*/		if (filler->playerCoord.y < filler->opCoord.y)
 		{
-			return (goDown(filler));
+			return (go_down(filler));
 		}
 		else
 		{
-			return (goUp(filler));
+			return (go_up(filler));
 		}
-	}
+//	}
 }

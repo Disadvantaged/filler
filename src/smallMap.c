@@ -6,23 +6,29 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:06:22 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 15:27:28 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 16:23:04 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int	goDownAndRight(t_filler *filler)
+static int	go_down_and_right(t_filler *filler)
 {
 	int		i;
 	int		j;
 
-	i = 0;
+	i = 0 - filler->psize.y;
 	while (i < filler->msize.y)
 	{
-		j = 0;
+		j = 0 - filler->psize.x;
 		while (j < filler->msize.x)
 		{
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j++;
 		}
 		i++;
@@ -30,17 +36,23 @@ static int	goDownAndRight(t_filler *filler)
 	return (0);
 }
 
-static int	goDownAndLeft(t_filler *filler)
+static int	go_down_and_left(t_filler *filler)
 {
 	int		i;
 	int		j;
 
-	i = 0;
+	i = 0 - filler->psize.y;
 	while (i < filler->msize.y)
 	{
 		j = filler->msize.x - 1;
 		while (j >= 0)
 		{
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j--;
 		}
 		i++;
@@ -48,7 +60,7 @@ static int	goDownAndLeft(t_filler *filler)
 	return (0);
 }
 
-static int	goUpAndRight(t_filler *filler)
+static int	go_up_and_right(t_filler *filler)
 {
 	int		i;
 	int		j;
@@ -56,10 +68,15 @@ static int	goUpAndRight(t_filler *filler)
 	i = filler->msize.y - 1;
 	while (i >= 0)
 	{
-		j = 0;
+		j = 0 - filler->psize.x;
 		while (j < filler->msize.x)
 		{
-
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j++;
 		}
 		i--;
@@ -67,7 +84,7 @@ static int	goUpAndRight(t_filler *filler)
 	return (0);
 }
 
-static int	goUpAndLeft(t_filler *filler)
+static int	go_up_and_left(t_filler *filler)
 {
 	int		i;
 	int		j;
@@ -78,7 +95,12 @@ static int	goUpAndLeft(t_filler *filler)
 		j = filler->msize.x - 1;
 		while (j >= 0)
 		{
-			
+			if (can_place(filler, i, j) == 1)
+			{
+				ft_printf("%d %d\n", i - filler->pcoord[0].y,
+						j - filler->pcoord[0].x);
+				return (1);
+			}
 			j--;
 		}
 		i--;
@@ -86,20 +108,20 @@ static int	goUpAndLeft(t_filler *filler)
 	return (0);
 }
 
-int		smallMap(t_filler *filler)
+int		small_map(t_filler *filler)
 {
 	if (filler->playerCoord.y < filler->msize.y / 2)
 	{
 		if (filler->playerCoord.x < filler->msize.x / 2)
-			return (goUpAndLeft(filler));
+			return (go_up_and_left(filler));
 		else
-			return (goUpAndRight(filler));
+			return (go_up_and_right(filler));
 	}
 	else
 	{
 		if (filler->playerCoord.x < filler->msize.x / 2)
-			return (goDownAndLeft(filler));
+			return (go_down_and_left(filler));
 		else
-			return (goDownAndRight(filler));
+			return (go_down_and_right(filler));
 	}
 }

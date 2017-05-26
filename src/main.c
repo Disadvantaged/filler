@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:34:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:52:56 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 15:47:01 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void		freeFiller(t_filler *filler)
+void		free_filler(t_filler *filler)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ void		freeFiller(t_filler *filler)
 	filler->piece = NULL;
 }
 
-void		getStartingPosition(t_filler *filler)
+void		get_starting_position(t_filler *filler)
 {
 	int		i;
 	int		j;
@@ -76,14 +76,14 @@ int			main(void)
 	filler = init();
 	while (flag != 0)
 	{
-		flag = updateMap(filler);
+		flag = update_map(filler);
 		if (flag == 0)
 			break ;
-		getPiece(filler);
+		get_piece(filler);
 		flag = algo(filler);
 		if (flag == 0)
 			break ;
-		freeFiller(filler);
+		free_filler(filler);
 	}
 	ft_printf("0 0\n");
 	free(filler);

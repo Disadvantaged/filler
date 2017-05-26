@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 15:13:31 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 15:53:35 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ typedef struct	s_filler
 	t_coord			opCoord;
 }				t_filler;
 
-int				updateMap(t_filler *filler);
-void			getCoord(t_filler *filler);
-void			getPiece(t_filler *filler);
+int				update_map(t_filler *filler);
+void			get_coord(t_filler *filler);
+void			get_piece(t_filler *filler);
 t_filler		*init(void);
-void			freeFiller(t_filler *filler);
-int				checkPlace(t_filler *filler, int cur, int y, int x);
-int				canPlace(t_filler *filler, int y, int x);
+void			free_filler(t_filler *filler);
+int				check_place(t_filler *filler, int cur, int y, int x);
+int				can_place(t_filler *filler, int y, int x);
 int				algo(t_filler *filler);
-int				bigMap(t_filler *filler);
-int				smallMap(t_filler *filler);
-void			getStartingPosition(t_filler *filler);
+int				big_map(t_filler *filler);
+int				small_map(t_filler *filler);
+void			get_starting_position(t_filler *filler);
 
 #endif

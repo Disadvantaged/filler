@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 15:44:31 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 14:37:27 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 17:03:19 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void		getSizeOfMap(t_filler *filler, char *buf)
+void		get_size_of_map(t_filler *filler, char *buf)
 {
 	filler->msize.y = ft_atoi(&buf[8]);
 	filler->msize.x = ft_atoi(&buf[9 + ft_nbrlen(filler->msize.y)]);
@@ -27,15 +27,14 @@ void		getSizeOfMap(t_filler *filler, char *buf)
 	}
 }
 
-int			updateMap(t_filler *filler)
+int			update_map(t_filler *filler)
 {
 	char		*buf;
 	int			i;
-	static int	init = 0;
 
 	if (get_next_line(STDIN_FILENO, &buf) == 0)
 		return (0);
-	getSizeOfMap(filler, buf);
+	get_size_of_map(filler, buf);
 	i = 0;
 	filler->map[filler->msize.y] = NULL;
 	while (i < filler->msize.y)
@@ -44,15 +43,11 @@ int			updateMap(t_filler *filler)
 		filler->map[i++] = ft_strdup(buf + 4);
 		ft_strdel(&buf);
 	}
-	if (init == 0)
-	{
-		getStartingPosition(filler);
-		init = 1;
-	}
+	get_starting_position(filler);
 	return (1);
 }
 
-void		getCoord(t_filler *filler)
+void		get_coord(t_filler *filler)
 {
 	int		i;
 	int		j;
@@ -76,7 +71,7 @@ void		getCoord(t_filler *filler)
 	}
 }
 
-void		getPiece(t_filler *filler)
+void		get_piece(t_filler *filler)
 {
 	char	*buf;
 	int		i;
@@ -91,7 +86,7 @@ void		getPiece(t_filler *filler)
 	while (i < filler->psize.y)
 		get_next_line(STDIN_FILENO, &filler->piece[i++]);
 	filler->piece[i] = NULL;
-	getCoord(filler);
+	get_coord(filler);
 }
 
 t_filler	*init(void)
