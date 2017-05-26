@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:34:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/13 16:55:28 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:14:45 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			main(void)
 		if (flag == 0)
 			break ;
 		get_piece(filler);
-		flag = place_piece(filler);
+		flag = algo(filler);
 		if (flag == 0)
 			break ;
 		free_filler(filler);

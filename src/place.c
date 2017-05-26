@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:23:17 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/13 16:59:04 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:12:15 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		check_place(t_filler * filler, int i, int y, int x)
+int		checkPlace(t_filler * filler, int i, int y, int x)
 {
 	int		xs;
 	int		ys;
@@ -26,7 +26,7 @@ int		check_place(t_filler * filler, int i, int y, int x)
 	return (0);
 }
 
-int		place(t_filler *filler, int y, int x)
+int		canPlace(t_filler *filler, int y, int x)
 {
 	int		i;
 	int		k;
@@ -47,29 +47,4 @@ int		place(t_filler *filler, int y, int x)
 		i++;
 	}
 	return (k == 1 ? 1 : 0);
-}
-
-int		place_piece(t_filler *filler)
-{
-	int		i;
-	int		j;
-	int		flag;
-
-	i = 0 - filler->psize.y;
-	while (i != filler->msize.y)
-	{
-		j = 0 - filler->psize.x;
-		while (j != filler->msize.x)
-		{
-			if ((flag = place(filler, i, j)) == 1)
-			{
-				ft_printf("%d %d\n", i - filler->pcoord[0].y,
-				j - filler->pcoord[0].x);
-				return (1);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }

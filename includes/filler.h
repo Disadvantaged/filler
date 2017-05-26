@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:35:28 by dgolear           #+#    #+#             */
-/*   Updated: 2017/04/13 16:56:16 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:14:37 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void			get_coord(t_filler *filler);
 void			get_piece(t_filler *filler);
 t_filler		*init(void);
 void			free_filler(t_filler *filler);
-int				place_piece(t_filler *filler);
+int				checkPlace(t_filler *filler, int cur, int y, int x);
+int				canPlace(t_filler *filler, int y, int x);
+int				algo(t_filler *filler);
 
 #endif
