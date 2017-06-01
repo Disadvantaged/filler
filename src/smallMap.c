@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:06:22 by dgolear           #+#    #+#             */
-/*   Updated: 2017/05/26 16:23:04 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/06/01 11:35:29 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	go_down_and_right(t_filler *filler)
 	int		i;
 	int		j;
 
-	i = 0 - filler->psize.y;
+	i = 0; 
 	while (i < filler->msize.y)
 	{
-		j = 0 - filler->psize.x;
+		j = 0;
 		while (j < filler->msize.x)
 		{
 			if (can_place(filler, i, j) == 1)
@@ -110,16 +110,16 @@ static int	go_up_and_left(t_filler *filler)
 
 int		small_map(t_filler *filler)
 {
-	if (filler->playerCoord.y < filler->msize.y / 2)
+	if (filler->playerCoord.y < filler->opCoord.y) 
 	{
-		if (filler->playerCoord.x < filler->msize.x / 2)
+		if (filler->playerCoord.x < filler->opCoord.x)
 			return (go_up_and_left(filler));
 		else
 			return (go_up_and_right(filler));
 	}
 	else
 	{
-		if (filler->playerCoord.x < filler->msize.x / 2)
+		if (filler->playerCoord.x < filler->opCoord.x)
 			return (go_down_and_left(filler));
 		else
 			return (go_down_and_right(filler));

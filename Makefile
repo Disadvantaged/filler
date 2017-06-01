@@ -37,6 +37,7 @@ $(NAME): $(LIBFT_PATH)/libft.a $(OBJS)
 clean:
 	@ echo -n 'removing objects ... '
 	@ $(RM) $(OBJS)
+	@ $(RM) resources/filler.trace
 	@ echo '[done]'
 	make -C $(LIBFT_PATH) clean
 fclean: clean
